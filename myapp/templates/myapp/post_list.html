@@ -1,4 +1,11 @@
-<html>
-    <p>Hi there!</p>
-    <p>It works!</p>
-</html>
+<div>
+    <h1><a href="/">Moss Demo</a></h1>
+</div>
+
+{% for record in records %}
+    <div>
+        <p>published: {{ record.published_date }}</p>
+        <h1><a href="">{{ record.desc }}</a></h1>
+        <p>{{ record.comment|linebreaksbr }}</p>
+    </div>
+{% endfor %}
