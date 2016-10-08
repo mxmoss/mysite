@@ -1,11 +1,30 @@
-<div>
+{% load staticfiles %}
+<html>
+<head>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="{% static 'css/myapp.css' %}">
+</head>
+<body>
+<div class="page-header">
     <h1><a href="/">Moss Demo</a></h1>
 </div>
-
-{% for record in records %}
-    <div>
-        <p>published: {{ record.published_date }}</p>
-        <h1><a href="">{{ record.desc }}</a></h1>
-        <p>{{ record.comment|linebreaksbr }}</p>
+<div class="content container">
+    <div class="row">
+        <div class="col-md-8">
+					{% for record in records %}
+                <div class="post">
+                    <div class="date">
+                        <p>published: {{ record.published_date }}</p>
+                    </div>
+                    <h1><a href="">{{ record.desc }}</a></h1>
+                    <p>{{ record.comment|linebreaksbr }}</p>
+                </div>
+            {% endfor %}
+        </div>
     </div>
-{% endfor %}
+</div>
+
+</body>
+</html>
