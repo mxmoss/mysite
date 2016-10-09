@@ -20,7 +20,11 @@ PROJECT_PATH = os.path.join(SETTINGS_DIR, os.pardir)
 PROJECT_ROOT = os.path.abspath(PROJECT_PATH)
 TEMPLATE_DIRS = (
     os.path.join(PROJECT_ROOT, 'templates'),
+    'myapp/templates',
 )
+
+LOGIN_REDIRECT_URL = 'post_list'
+LOGOUT_REDIRECT_URL = 'login'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
