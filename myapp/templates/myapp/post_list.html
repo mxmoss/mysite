@@ -1,12 +1,13 @@
 {% extends 'myapp/base.html' %}
+
 {% block content %}
 	{% for record in records %}
 				<div class="post">
 						<div class="date">
 								<p>published: {{ record.published_date }}</p>
 						</div>
-						<h1><a href="">{{ record.desc }}</a></h1>
+						<h1><a href="{% url 'post_detail' pk=record.pk %}">{{ record.desc }}</a></h1> 
 						<p>{{ record.comment|linebreaksbr }}</p>
 				</div>
 		{% endfor %}
-{% endblock %}
+{% endblock content %}
