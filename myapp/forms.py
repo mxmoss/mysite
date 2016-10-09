@@ -6,3 +6,4 @@ class PostForm(forms.ModelForm):
 
     class Meta:
         model = myRecord
+        fields = ('desc', 'comment',)
