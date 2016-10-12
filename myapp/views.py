@@ -10,15 +10,24 @@ def index(request):
   return HttpResponse("Hello, world. You're at the myapp index.")
 	
 def post_list(request):
+  if not request.user.is_authenticated():
+    return render(request, 'registration/login.html')
+  else:
     records = myRecord.objects.filter().order_by('created_date')
 #    records = myRecord.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
     return render(request, 'myapp/post_list.html', {'records': records})
 
 def post_detail(request, pk):
+  if not request.user.is_authenticated():
+    return render(request, 'registration/login.html')
+  else:
     record = get_object_or_404(myRecord, pk=pk)
     return render(request, 'myapp/post_detail.html', {'record': record})
 		
 def post_new(request):
+  if not request.user.is_authenticated():
+    return render(request, 'registration/login.html')
+  else:
     if request.method == "POST":
         form = PostForm(request.POST)
         if form.is_valid():
@@ -32,6 +41,9 @@ def post_new(request):
     return render(request, 'myapp/post_edit.html', {'form': form})
 		
 def post_edit(request, pk):
+  if not request.user.is_authenticated():
+    return render(request, 'registration/login.html')
+  else:
     record = get_object_or_404(myRecord, pk=pk)
     if request.method == "POST":
         form = PostForm(request.POST, instance=record)
