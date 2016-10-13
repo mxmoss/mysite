@@ -49,8 +49,8 @@ def post_edit(request, pk):
     if request.method == "POST":
         form = PostForm(request.POST, instance=record)
         if form.is_valid():
-            record = form.save(commit=False)
-            post.edited_by = request.user
+            post = form.save(commit=False)
+            #post.edited_by = request.user
             post.edit_dt = timezone.now()
             record.save()
             return redirect('post_detail', pk=record.pk)
