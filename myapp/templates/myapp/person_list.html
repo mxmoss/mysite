@@ -2,8 +2,8 @@
 
 {% block content %}
 	{% for record in records %}
-				<div class="post">
-          <h1><a href="{% url 'post_detail' pk=record.pk %}">{{ record.last_nm_txt }}, {{ record.first_nm_txt }}</a></h1> 
+				<div class="person">
+          <h1><a href="{% url 'person_detail' pk=record.pk %}">{{ record.last_nm_txt }}, {{ record.first_nm_txt }}</a></h1> 
           <p>{{ record.address_street1 }}</p>
           <div class="date">
               <p>added: {{ record.add_dt }}</p>

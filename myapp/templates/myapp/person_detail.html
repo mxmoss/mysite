@@ -1,0 +1,16 @@
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+    <div class="person">
+		{% if user.is_authenticated %}
+				<a class="btn btn-default" href="{% url 'person_edit' pk=record.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+		{% endif %}
+        <h1>{{ record.last_nm_txt }}, {{ record.first_nm_txt }}</h1>
+        <p>{{ record.address_street1 }}</p>
+        {% if record.add_dt %}
+            <div class="date">
+                {{ record.add_dt }}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

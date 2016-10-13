@@ -2,7 +2,7 @@ from django import forms
 
 from .models import myRecord
 
-class PostForm(forms.ModelForm):
+class PersonForm(forms.ModelForm):
 
     class Meta:
         model = myRecord

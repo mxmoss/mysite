@@ -23,7 +23,7 @@ TEMPLATE_DIRS = (
     'myapp/templates',
 )
 
-LOGIN_REDIRECT_URL = 'post_list'
+LOGIN_REDIRECT_URL = 'person_list'
 LOGOUT_REDIRECT_URL = 'login'
 
 # Quick-start development settings - unsuitable for production
