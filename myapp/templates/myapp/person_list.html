@@ -1,13 +1,14 @@
 {% extends 'myapp/base.html' %}
-
 {% block content %}
+<table style="table.equalDevide tr td { width:25%; }; width:800px;">
 	{% for record in records %}
-				<div class="person">
-          <h1><a href="{% url 'person_detail' pk=record.pk %}">{{ record.last_nm_txt }}, {{ record.first_nm_txt }}</a></h1> 
-          <p>{{ record.address_street1 }}</p>
-          <div class="date">
-              <p>added: {{ record.add_dt }}</p>
-          </div>
+        <div class="person" style="background-color: {% cycle '#e1e6ef' 'white' %}">
+				<tr>
+        <td><a href="{% url 'person_detail' pk=record.pk %}">{{ record.last_nm_txt }}, {{ record.first_nm_txt }}</a></td>
+        <td>{{ record.address_street1 }}</td>
+        <td><div class="date">Added: {{ record.add_dt }}</div></td>
+        </tr>
 				</div>
 		{% endfor %}
+</table>
 {% endblock content %}
