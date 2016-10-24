@@ -2,15 +2,59 @@
 
 {% block content %}
     <div class="person">
-		{% if user.is_authenticated %}
-				<a class="btn btn-default" href="{% url 'person_edit' pk=record.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+    <h3>{{ record.last_nm_txt }}, {{ record.first_nm_txt }} {{ record.middle_nm_txt }} {{ record.suffix_txt }}, {{ record.prefix_txt }}
+		<a class="btn btn-default" href="{% url 'person_edit' pk=record.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+    </h3>
+
+    {% if not record.active_ind %}
+      <i>Inactive</i><br/>
 		{% endif %}
-        <h1>{{ record.last_nm_txt }}, {{ record.first_nm_txt }}</h1>
-        <p>{{ record.address_street1 }}</p>
-        {% if record.add_dt %}
-            <div class="date">
-                {{ record.add_dt }}
-            </div>
+    {% if record.nickname_txt %}
+      "{{ record.nickname_txt }}"<br/>
+		{% endif %}
+    {% if record.pronounced_txt %}
+      {{ record.pronounced_txt }}<br/>
+		{% endif %}
+    Birth Date: {{ record.birth_dt |date:"m/d/y"}} Gender: {{ record.gender_cd }}<br/>
+    {% if record.other_id %}
+      {{ record.other_id }}<br/>
+		{% endif %}
+    {{ record.address_street1 }}<br/>
+    {% if record.address_street2 %}
+      {{ record.address_street2 }}<br/>
+		{% endif %}
+    {{ record.city_cd }}, {{ record.state_cd }} {{ record.zip_cd }} 
+    {% if record.zip_cd_ext %}
+      -{{ record.zip_cd_ext }}
+    {% endif %}<br/>
+    {{ record.county_nm_txt }}<br/>
+    {% if record.email_txt %}
+      {{ record.email_txt }}<br/>
+		{% endif %}
+    {% if record.phone1_number %}
+      {{ record.phone1_number }} {{ record.phone1_extension }} {{ record.phone1_type_cd }}<br/>
+		{% endif %}
+    {% if record.phone2_number %}
+      {{ record.phone2_number }} {{ record.phone2_extension }} {{ record.phone2_type_cd }}<br/>
+		{% endif %}
+    {% if record.phone3_number %}
+      {{ record.phone3_number }} {{ record.phone3_extension }} {{ record.phone3_type_cd }}<br/>
+		{% endif %}
+    {{ record.comments_txt }}<br/>
+
+    <div class="date">
+      {% if record.add_dt %}
+        <sm>
+        Added {{ record.add_dt | date:"m/d/y"}} by {{ record.added_by }}
+        {% if record.edit_dt %}<br/>
+          Edited {{ record.edit_dt  |date:"m/d/y"}} by {{ record.edited_by }}
         {% endif %}
+        {% if record.delete_dt %}<br/>
+          Deleted {{ record.delete_dt  |date:"m/d/y"}} {{ record.deleted_by }}<br/>
+        {% endif %}
+        </sm>
+      {% endif %}
+    </div>
+    {{ record.as_p }} 
     </div>
 {% endblock %}

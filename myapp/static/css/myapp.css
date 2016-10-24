@@ -1,17 +1,18 @@
 .page-header {
     background-color: #6290db;
     margin-top: 0;
-    padding: 20px 20px 20px 40px;
+/*    padding: 20px 20px 20px 40px; */
+    padding: 8px 8px 8px 20px;
 }
 
 .page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
     color: #ffffff;
-    font-size: 24pt;
+    font-size: 20pt;
     text-decoration: none;
 }
 
 .content {
-    margin-left: 40px;
+    margin-left: 25px;
 }
 
 h1, h2, h3, h4 {
@@ -26,14 +27,33 @@ h1, h2, h3, h4 {
     float: right;
 }
 
-.person-form textarea, .person-form input {
+.person-form textarea {
     width: 100%;
+}
+
+.big-name-edit {
+  width: 20em;
+}
+.medium-name-edit {
+  width: 10em;
+}
+.small-name-edit {
+  width: 5em;
+}
+.phone-pre {
+  width: 5em;
+}
+.phone-number {
+  width: 10em;
+}
+.phone-ext {
+  width: 5em;
 }
 
 .top-menu, .top-menu:hover, .top-menu:visited {
     color: #ffffff;
     float: right;
-    font-size: 24pt;
+    font-size: 20pt;
     margin-right: 20px;
 }
 
