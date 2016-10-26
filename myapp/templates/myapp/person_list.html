@@ -1,14 +1,42 @@
 {% extends 'myapp/base.html' %}
 {% block content %}
-<table style="table.equalDevide tr td { width:25%; }; width:800px;">
+<table class="table table-sm"> <!-- style="table.equalDevide tr td { width:20%; }; width:800px;"> -->
+  <col style="width:25em;">
+  <col style="width:8%;">
+  <col style="width:25%;">
+  <col style="width:7%;">
+  <col style="width:7%;">
+  <col style="width:7%;">
+  <col style="width:7%;">
+  <col style="width:7%;">
+  <col style="width:7%;">
+<thead>
+  <tr>
+    <th style="width:25em;">Name</th>
+    <th>Birth Date</th>
+    <th>Address</th>
+    <th>Phone 1</th>
+    <th>Phone 2</th>
+    <th>Phone 3</th>
+    <th>Email</th>
+    <th>Nickname</th>
+    <th>Added</th>
+  </tr>
+</thead>
 	{% for record in records %}
-        <div class="person" style="background-color: {% cycle '#e1e6ef' 'white' %}">
+<!--        <div class="person" style="background-color: {% cycle '#e1e6ef' 'white' %}"> -->
 				<tr>
-        <td><a href="{% url 'person_detail' pk=record.pk %}">{{ record.last_nm_txt }}, {{ record.first_nm_txt }}</a></td>
-        <td>{{ record.address_street1 }}</td>
-        <td><div class="date">Added: {{ record.add_dt }}</div></td>
+        <td><a href="{% url 'person_detail' pk=record.pk %}">{{ record.last_nm_txt }}, {{ record.first_nm_txt }} {{ record.middle_nm_txt }} {{ record.suffix_txt }}, {{ record.prefix_txt }}</a></td>
+        <td>{{ record.birth_dt |date:"m/d/y" }}</td>
+        <td>{{ record.address_street1 }} {{ record.address_street1 }}, {{ record.address_street2 }} {{ record.city_cd }} {{ record.state_cd }} {{ record.zip_cd }}</td>
+        <td>{{ record.phone1_number }}</td>
+        <td>{{ record.phone2_number }}</td>
+        <td>{{ record.phone3_number }}</td>
+        <td>{{ record.email_txt }}</td>
+        <td>{{ record.nickname_txt }}</td>
+        <td><div class="date">{{ record.add_dt | date:"m/d/y"}}</div></td>
         </tr>
-				</div>
+<!--				</div> -->
 		{% endfor %}
 </table>
 <div class="pagination">
