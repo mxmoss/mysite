@@ -11,4 +11,21 @@
 				</div>
 		{% endfor %}
 </table>
+<div class="pagination">
+    <span class="step-links">
+        <a href="?page={1}">First</a>
+        {% if records.has_previous %}
+            <a href="?page={{ records.previous_page_number }}">Previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ records.number }} of {{ records.paginator.num_pages }}.
+        </span>
+
+        {% if records.has_next %}
+            <a href="?page={{ records.next_page_number }}">Next</a>
+        {% endif %}
+    </span>
+    <a href="?page={{ records.paginator.num_pages }}">Last</a>
+</div>
 {% endblock content %}

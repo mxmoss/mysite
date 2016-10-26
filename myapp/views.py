@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.utils import timezone
@@ -13,8 +14,19 @@ def person_list(request):
   if not request.user.is_authenticated():
     return render(request, 'registration/login.html')
   else:
-    records = myRecord.objects.filter().order_by('add_dt')
-#    records = myRecord.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    records_list = myRecord.objects.filter().order_by('add_dt')
+    paginator = Paginator(records_list, 25) # Show 25 records per page
+    
+    page = request.GET.get('page')    
+    try:
+        records = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        records = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        contacts = paginator.page(paginator.num_pages)
+
     return render(request, 'myapp/person_list.html', {'records': records})
 
 def person_detail(request, pk):
