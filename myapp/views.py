@@ -9,6 +9,24 @@ from django.shortcuts import redirect
 
 def index(request):
   return HttpResponse("Hello, world. You're at the myapp index.")
+
+def do_search(request):
+#  This is a rudimentary case-sensitive search. 
+  searching = request.POST.get('searchfield')
+  records_list = myRecord.objects.filter(last_nm_txt__contains=searching).order_by('add_dt')
+  paginator = Paginator(records_list, 25) # Show 25 records per page
+  page = request.GET.get('page')    
+  try:
+    records = paginator.page(page)
+  except PageNotAnInteger:
+    # If page is not an integer, deliver first page.
+    records = paginator.page(1)
+  except EmptyPage:
+    # If page is out of range (e.g. 9999), deliver last page of results.
+    contacts = paginator.page(paginator.num_pages)
+
+  return render(request, 'myapp/person_list.html', {'records': records})
+
 	
 def person_list(request):
   if not request.user.is_authenticated():
@@ -18,6 +36,8 @@ def person_list(request):
     paginator = Paginator(records_list, 25) # Show 25 records per page
     
     page = request.GET.get('page')    
+    if request.POST.get('searchfield')!='':
+      searchStr = request.POST.get('searchfield')
     try:
         records = paginator.page(page)
     except PageNotAnInteger:
