@@ -20,7 +20,7 @@ def person_list(request):
     # Rudimentary case-insensitive search across some fields
     searching = request.POST.get('searchStr')
     if not searching:
-      records_list = myRecord.objects.filter().order_by('add_dt')
+      records_list = myRecord.objects.filter().order_by('last_nm_txt')
     else:
       q_list = [Q(last_nm_txt__icontains=searching) , 
                 Q(first_nm_txt__icontains=searching),
