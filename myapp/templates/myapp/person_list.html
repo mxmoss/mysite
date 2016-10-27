@@ -1,9 +1,5 @@
 {% extends 'myapp/base.html' %}
 {% block content %}
-<form method="POST" class="search-form" action="{% url 'person_list' %}" >{% csrf_token %}
-<input type="text" name="searchStr" size="30"> 
-<button type="submit" class="search btn btn-default">Search</button>
-</form>
 <div class="pagination">
     <span class="step-links">
         <a href="?page={1}" class="btn btn-info btn-md"><span class="glyphicon glyphicon-fast-backward"></span></a>
