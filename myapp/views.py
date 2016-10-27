@@ -6,38 +6,31 @@ from .models import myRecord
 from django.shortcuts import render, get_object_or_404
 from .forms import PersonForm
 from django.shortcuts import redirect
+from django.db.models import Q
+import functools
+import operator
 
 def index(request):
   return HttpResponse("Hello, world. You're at the myapp index.")
 
-def do_search(request):
-#  This is a rudimentary case-sensitive search. 
-  searching = request.POST.get('searchfield')
-  records_list = myRecord.objects.filter(last_nm_txt__contains=searching).order_by('add_dt')
-  paginator = Paginator(records_list, 25) # Show 25 records per page
-  page = request.GET.get('page')    
-  try:
-    records = paginator.page(page)
-  except PageNotAnInteger:
-    # If page is not an integer, deliver first page.
-    records = paginator.page(1)
-  except EmptyPage:
-    # If page is out of range (e.g. 9999), deliver last page of results.
-    contacts = paginator.page(paginator.num_pages)
-
-  return render(request, 'myapp/person_list.html', {'records': records})
-
-	
 def person_list(request):
   if not request.user.is_authenticated():
     return render(request, 'registration/login.html')
   else:
-    records_list = myRecord.objects.filter().order_by('add_dt')
-    paginator = Paginator(records_list, 25) # Show 25 records per page
+    # Rudimentary case-insensitive search across some fields
+    searching = request.POST.get('searchStr')
+    if not searching:
+      records_list = myRecord.objects.filter().order_by('add_dt')
+    else:
+      q_list = [Q(last_nm_txt__icontains=searching) , 
+                Q(first_nm_txt__icontains=searching),
+                Q(address_street1__icontains=searching),
+                Q(phone1_number__icontains=searching),
+                ]
+      records_list = myRecord.objects.filter( functools.reduce(operator.or_, q_list)).filter().order_by('add_dt')
+    paginator = Paginator(records_list, 10) # Show 10 records per page
     
     page = request.GET.get('page')    
-    if request.POST.get('searchfield')!='':
-      searchStr = request.POST.get('searchfield')
     try:
         records = paginator.page(page)
     except PageNotAnInteger:

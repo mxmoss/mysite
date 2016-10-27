@@ -1,6 +1,6 @@
 {% extends 'myapp/base.html' %}
 {% block content %}
-<form method="POST" class="search-form" action="{% url 'do_search' %}" >{% csrf_token %}
+<form method="POST" class="search-form" action="{% url 'person_list' %}" >{% csrf_token %}
 <input type="text" name="searchStr" size="30"> 
 <button type="submit" class="search btn btn-default">Search</button>
 </form>
