@@ -4,22 +4,28 @@
 <input type="text" name="searchStr" size="30"> 
 <button type="submit" class="search btn btn-default">Search</button>
 </form>
-<table class="table table-sm"> <!-- style="table.equalDevide tr td { width:20%; }; width:800px;"> -->
-  <col width="40%"/>
-  <col width="8%;"/>
-  <col width="40%;"/>
-  <col width="5%;"/>
-  <col width="5%;"/>
-  <col width="5%;"/>
-  <col width="5%;"/>
-  <col width="5%;"/>
-  <col width="5%;"/>
-<!--
+<div class="pagination">
+    <span class="step-links">
+        <a href="?page={1}" class="btn btn-info btn-md"><span class="glyphicon glyphicon-fast-backward"></span></a>
+        {% if records.has_previous %}
+            <a href="?page={{ records.previous_page_number }}" class="btn btn-info btn-md"><span class="glyphicon glyphicon-backward"></span></a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ records.number }} of {{ records.paginator.num_pages }}
+        </span>
+
+        {% if records.has_next %}
+            <a href="?page={{ records.next_page_number }}" class="btn btn-info btn-md"><span class="glyphicon glyphicon-forward"></span></a>
+        {% endif %}
+    </span>
+    <a href="?page={{ records.paginator.num_pages }}" class="btn btn-info btn-md"><span class="glyphicon glyphicon-fast-forward"></span></a>
+</div>
+<div class="table-container">
 <thead>
-  <tr>
-    <th>Name</th>
+  <tr role="row" class="heading">
+    <th width="15%">Name</th>
     <th>Birth Date</th>
-    <th>Address</th>
     <th>Phone 1</th>
     <th>Phone 2</th>
     <th>Phone 3</th>
@@ -28,9 +34,8 @@
     <th>Added</th>
   </tr>
 </thead>
--->
+<tbody>
 	{% for record in records %}
-<!--        <div class="person" style="background-color: {% cycle '#e1e6ef' 'white' %}"> -->
 				<tr>
         <td><a href="{% url 'person_detail' pk=record.pk %}">{{ record.last_nm_txt }}, {{ record.first_nm_txt }} {{ record.middle_nm_txt }} {{ record.suffix_txt }} {{ record.prefix_txt }}</a></td>
         <td>{{ record.birth_dt |date:"m/d/y" }}</td>
@@ -44,22 +49,24 @@
         </tr>
 <!--				</div> -->
 		{% endfor %}
+</tbody>
 </table>
+</div>
 <div class="pagination">
     <span class="step-links">
-        <a href="?page={1}">First</a>
+        <a href="?page={1}" class="btn btn-info btn-md"><span class="glyphicon glyphicon-fast-backward"></span></a>
         {% if records.has_previous %}
-            <a href="?page={{ records.previous_page_number }}">Previous</a>
+            <a href="?page={{ records.previous_page_number }}" class="btn btn-info btn-md"><span class="glyphicon glyphicon-backward"></span></a>
         {% endif %}
 
         <span class="current">
-            Page {{ records.number }} of {{ records.paginator.num_pages }}.
+            Page {{ records.number }} of {{ records.paginator.num_pages }}
         </span>
 
         {% if records.has_next %}
-            <a href="?page={{ records.next_page_number }}">Next</a>
+            <a href="?page={{ records.next_page_number }}" class="btn btn-info btn-md"><span class="glyphicon glyphicon-forward"></span></a>
         {% endif %}
     </span>
-    <a href="?page={{ records.paginator.num_pages }}">Last</a>
+    <a href="?page={{ records.paginator.num_pages }}" class="btn btn-info btn-md"><span class="glyphicon glyphicon-fast-forward"></span></a>
 </div>
 {% endblock content %}
