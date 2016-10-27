@@ -37,8 +37,12 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
+        {% if user.is_authenticated %}
         <li class="active"><a href="/">People<span class="sr-only">(current)</span></a></li>
         <li><a href="/admin/auth/user/">Users</a></li>
+        {% else %}
+        <li><a href="/login">Login<span class="sr-only"></span></a></li>
+        {% endif %}
       </ul>
       <form class="navbar-form navbar-left" method="POST" class="search-form" action="{% url 'person_list' %}" >{% csrf_token %}
         <div class="form-group">
@@ -50,7 +54,11 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="logout">Log Off</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="/logout">Log Off</a></li>
+            {% else %}
+            <li><a href="/login">Login<span class="sr-only"></span></a></li>
+            {% endif %}
             <li><a href="http://softwarefordentists.com">Software For Dentists</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="http://softwarefordentists.com/index.php/Table/Training-and-Support/Knowledge-base-and-DAISY-user-guides/">Help</a></li>
