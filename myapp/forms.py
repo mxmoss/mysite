@@ -67,6 +67,12 @@ class PersonForm(forms.ModelForm):
                                  label='County',
                                  required=False,
                                  widget = forms.TextInput(attrs={'class': 'big-name-edit', 'title': 'County',}))
+#Birthdate formatting
+#    birth_dt = forms.DateField(widget=forms.SelectDateWidget())
+    birth_dt = forms.DateField(
+                                 label='Birthdate',
+                                 required=False,
+                                 widget = forms.SelectDateWidget(attrs={'class': 'date', }))
 #Email formatting
     email_txt = forms.CharField(
                                  label='E-Mail',
@@ -99,8 +105,11 @@ class PersonForm(forms.ModelForm):
                                  label='Ext 1',
                                  required=False,
                                  widget = forms.TextInput(attrs={'class': 'phone-ext', 'title': 'Phone 3 Ext',}))
+    comments_txt = forms.CharField(
+                                 label='Comments',
+                                 required=False,
+                                 widget = forms.Textarea(attrs={'title': 'Comments',}))
                                  
-    birth_dt = forms.DateField(widget=forms.SelectDateWidget())
     class Meta:
         model = myRecord
         fields = (
