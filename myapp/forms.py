@@ -65,7 +65,7 @@ class PersonForm(forms.ModelForm):
                                  widget = forms.TextInput(attrs={'class': 'small-name-edit', 'title': 'Zip Code Extension',}))
     county_nm_txt = forms.CharField(
                                  label='County',
-                                 required=True,
+                                 required=False,
                                  widget = forms.TextInput(attrs={'class': 'big-name-edit', 'title': 'County',}))
 #Email formatting
     email_txt = forms.CharField(
@@ -132,5 +132,6 @@ class PersonForm(forms.ModelForm):
                   'phone3_number',
                   'phone3_extension',
                   'phone3_type_cd',
+									'comments_txt',
         ) 
                   #'person_image' )
