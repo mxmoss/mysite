@@ -1,11 +1,8 @@
-beautifulsoup4==4.4.1
-cycler==0.10.0
 Cython==0.24.1
 decorator==4.0.9
 Django==1.10.1
 django-markdown-deux==1.0.5
 markdown2==2.3.1
-matplotlib==1.5.1
 mysql-connector-python==2.1.3
 mysqlclient==1.3.8
 networkx==1.11
@@ -18,7 +15,6 @@ pytz==2016.3
 requests==2.8.1
 selenium==2.53.6
 six==1.10.0
-South==1.0.2
 sqlany-django==1.5
 sqlanydb==1.0.8
 virtualenv==15.0.3
