@@ -50,11 +50,11 @@ class PersonForm(forms.ModelForm):
 
 #Address info formatting
     address_street1 = forms.CharField(
-                                 label='Adress 1',
+                                 label='Address 1',
                                  required=True,
                                  widget = forms.TextInput(attrs={'class': 'big-name-edit', 'title': 'Address 1',}))
     address_street2 = forms.CharField(
-                                 label='Adress 2',
+                                 label='Address 2',
                                  required=False,
                                  widget = forms.TextInput(attrs={'class': 'big-name-edit', 'title': 'Address 2',}))
     city_cd = forms.CharField(
@@ -74,11 +74,10 @@ class PersonForm(forms.ModelForm):
                                  required=False,
                                  widget = forms.TextInput(attrs={'class': 'big-name-edit', 'title': 'County',}))
 #Birthdate formatting
-#    birth_dt = forms.DateField(widget=forms.SelectDateWidget())
     birth_dt = forms.DateField(
                                  label='Birthdate',
                                  required=False,
-                                 widget = forms.SelectDateWidget(attrs={'class': 'date', }))
+                                 widget = forms.SelectDateWidget(attrs={'class': 'date', 'title': 'Birth Date',}, years=range(2016,1910,-1) ))
 #Email formatting
     email_txt = forms.CharField(
                                  label='E-Mail',
