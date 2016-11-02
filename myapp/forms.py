@@ -2,6 +2,12 @@ from django import forms
 from .models import myRecord
 
 class PersonForm(forms.ModelForm):
+    active_ind = forms.BooleanField(
+                                 required=False,
+                                 label='Active',
+#                                 widget = forms.BooleanField(attrs={'style': 'text-align: left;', 'title': 'Active',}),
+                                 )
+                                 
     prefix_txt = forms.CharField(
                                  label='Prefix',
                                  required=False,
@@ -98,11 +104,11 @@ class PersonForm(forms.ModelForm):
                                  required=False,
                                  widget = forms.TextInput(attrs={'class': 'phone-ext', 'title': 'Phone 1 Ext',}))
     phone2_extension = forms.CharField(
-                                 label='Ext 1',
+                                 label='Ext 2',
                                  required=False,
                                  widget = forms.TextInput(attrs={'class': 'phone-ext', 'title': 'Phone 2 Ext',}))
     phone3_extension = forms.CharField(
-                                 label='Ext 1',
+                                 label='Ext 3',
                                  required=False,
                                  widget = forms.TextInput(attrs={'class': 'phone-ext', 'title': 'Phone 3 Ext',}))
     comments_txt = forms.CharField(
