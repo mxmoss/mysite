@@ -44,7 +44,7 @@
 
     <div class="date">
       {% if record.add_dt %}
-        <sm>
+        <small>
         Added {{ record.add_dt | date:"m/d/y"}} by {{ record.added_by }}
         {% if record.edit_dt %}<br/>
           Edited {{ record.edit_dt  |date:"m/d/y"}} by {{ record.edited_by }}
@@ -52,7 +52,7 @@
         {% if record.delete_dt %}<br/>
           Deleted {{ record.delete_dt  |date:"m/d/y"}} {{ record.deleted_by }}<br/>
         {% endif %}
-        </sm>
+        </small>
       {% endif %}
     </div>
     {{ record.as_p }} 
