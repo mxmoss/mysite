@@ -2,6 +2,7 @@
 simple django site using mysql
 
 This is an example of a database-driven Python website.
+It allows you to enter people into a contact list.
 Roughly based on the [Django Girls tutorial](https://tutorial.djangogirls.org/en/)
 
 It uses the following:
