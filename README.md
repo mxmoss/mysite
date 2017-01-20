@@ -2,6 +2,8 @@
 simple django site using mysql
 
 This is an example of a database-driven Python website.
+Roughly based on the [Django Girls tutorial](https://tutorial.djangogirls.org/en/)
+
 It uses the following:
 * MySQL
 * Python
