@@ -9,6 +9,7 @@ It uses the following:
 * The required python libraries are listed in requirements.txt
 
 To run:
+
 1. clone
 1. cd mysite
 1. python manage.py makemigrations
