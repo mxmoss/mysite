@@ -1,2 +1,9 @@
 *.pyc
 .idea/*
+/mysite/Lib/*
+/mysite/Scripts/*
+mysite/pip-selfcheck.json
+mysite/pyvenv.cfg
+.idea/misc.xml
+.idea/mysite.iml
+.idea/workspace.xml
