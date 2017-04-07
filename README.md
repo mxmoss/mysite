@@ -22,10 +22,12 @@ pip install -r requirements.txt
 ```
 
 If you are configured to use a local database for development you will need to run the migrate scripts. You only need to run this when the models have changed:
-
+```
 python manage.py makemigrations
 python manage.py migrate
-
+```
 Run the app server:
+```
 python manage.py runserver
+```
 
