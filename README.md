@@ -13,12 +13,13 @@ It uses the following:
 
 # Setting up local development
 Clone, configure your virtual environment and install requirements:
-
+```
 git clone https://github.com/mxmoss/mysite.git
 cd mysite
 python -m venv mysite
 mysite\Scripts\activate
 pip install -r requirements.txt
+```
 
 If you are configured to use a local database for development you will need to run the migrate scripts. You only need to run this when the models have changed:
 
