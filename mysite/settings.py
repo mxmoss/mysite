@@ -83,26 +83,34 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-	'ENGINE': 'django.db.backends.postgresql',
-	'HOST': 'localhost',
-	'NAME': 'mysite',
-	'USER': 'postgres',
-	'PASSWORD': 'imbatman',
-	'PORT': '5433',
+    'default': {  #sql_anywhere
+        'ENGINE': 'sqlany_django',
+        'NAME': 'dbfile',
+        'USER': 'myuser',
+        'PASSWORD': 'mysecret',
+        'OPTIONS': {'eng': 'ServerName'},
+        'PORT': '5432',
+        'HOST': None,
     },
-#    'MySQL': {
-#        'ENGINE': 'django.db.backends.mysql',
-#        'NAME': 'mysite',
-#        'USER': 'myuser',
-#        'PASSWORD': 'mypassword',
-#        'PORT': '13306',
-#    },
-
-#    'SQLLite3': { #SQLite3
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#    }
+    'postgres': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'HOST': '127.0.0.1',
+        'NAME': 'postgres',
+        'USER': 'myuser',
+        'PASSWORD': 'mysecret',
+        'PORT': '5432',
+    },
+    'MySQL': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'mysite',
+        'USER': 'myuser',
+        'PASSWORD': 'mysecret',
+        'PORT': '13306',
+    },
+    'SQLLite3': { #SQLite3
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
 }
 
 # Password validation
