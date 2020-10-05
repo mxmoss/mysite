@@ -7,5 +7,5 @@ pytz==2016.3
 requests==2.8.1
 six==1.10.0
 sqlany-django
-virtualenv==15.0.3
+virtualenv==20.0.33
 win-unicode-console==0.5
