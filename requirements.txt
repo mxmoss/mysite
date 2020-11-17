@@ -4,7 +4,7 @@ markdown2==2.3.9
 numpy==1.11.0
 psycopg2==2.7
 pytz==2016.3
-requests==2.8.1
+requests==2.20.0
 six==1.10.0
 sqlany-django
 virtualenv==15.0.3
