@@ -1,6 +1,6 @@
 Django==1.11.29
 django-markdown-deux==1.0.5
-markdown2==2.3.9
+markdown2==2.3.10
 numpy==1.19.4
 psycopg2==2.8.6
 pytz==2020.4
