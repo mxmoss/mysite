@@ -3,7 +3,7 @@ django-markdown-deux==1.0.5
 markdown2==2.3.9
 numpy==1.19.4
 psycopg2==2.8.6
-pytz==2020.4
+pytz==2020.5
 requests==2.20.0
 six==1.15.0
 sqlany-django
