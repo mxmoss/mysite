@@ -5,7 +5,7 @@ numpy==1.20.3
 psycopg2==2.8.6
 pytz==2021.1
 requests==2.25.1
-six==1.15.0
+six==1.16.0
 sqlany-django
 virtualenv==20.4.7
 win-unicode-console==0.5
