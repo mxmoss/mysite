@@ -1,4 +1,4 @@
-Django==3.2.3
+Django==3.2.5
 django-markdown-deux==1.0.5
 markdown2==2.4.0
 numpy==1.20.3
