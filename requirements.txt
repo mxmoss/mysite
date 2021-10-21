@@ -1,7 +1,7 @@
 Django==3.2.3
 django-markdown-deux==1.0.5
 markdown2==2.4.0
-numpy==1.20.3
+numpy==1.21.3
 psycopg2==2.8.6
 pytz==2021.1
 requests==2.25.1
